@@ -12,5 +12,5 @@ Available options (shortcode attributes) are:
 * inline_before: Text/HTML to print before the excerpt if display is inline
 * inline_after: Text/HTML to print after the excerpt if display is inline
 
-Example 1: <code>[shortcode]</code>
+Example 1: <code>[shortcode]</code><br />
 Example 2: <code>[shortcode display="inline"]</code>
