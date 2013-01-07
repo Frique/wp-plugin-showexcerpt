@@ -12,13 +12,16 @@ function showexcerpt_shortcode($attributes, $content){
 
 	// Defaults (TODO: as plugin options)
 	$attributes = shortcode_atts(array(
-		'before' => '<em class="excerpt">',
-		'after' => '</em>'
+		'display' => 'block',
+		'block_before' => '<p class="excerpt">',
+		'block_after' => '</p>',
+		'inline_before' => '<em class="excerpt">',
+		'inline_after' => '</em>'
 	), $attributes);
 
 	// Return
 	if(get_the_excerpt()){
-		return $attributes['before'].get_the_excerpt().$attributes['after'];
+		return $attributes[$attributes['display'].'_before'].get_the_excerpt().$attributes[$attributes['display'].'_after'];
 	}
 	return '';
 
