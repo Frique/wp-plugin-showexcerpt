@@ -3,11 +3,12 @@
 Plugin Name: Show Excerpt
 Plugin URI: http://frique.me/
 Description: Shortcode [excerpt] will print the Excerpt with "before" and "after", managable in plugin options.
-Version: 0.1
+Version: 0.2
 Author: Berend // frique.me
 Author URI: http://frique.me/
 */
 
+// The shortcode
 function showexcerpt_shortcode($attributes, $content){
 
 	// Defaults (TODO: as plugin options)
@@ -27,3 +28,24 @@ function showexcerpt_shortcode($attributes, $content){
 
 }
 add_shortcode('excerpt', 'showexcerpt_shortcode');
+
+// Add button to admin text editor (HTML tab)
+function showexcerpt_addeditorbutton(){
+	?>
+	<script type="text/javascript">
+		QTags.addButton(
+			"quicktag-showexcerpt",		// Button id-attribute
+			"[excerpt]",				// Button text
+			"[excerpt]",				// Opening tag
+			"",							// Closing tag
+			"",							// Shortcut key
+			"<?php __('Insert excerpt', 'showexcerpt'); ?>",	// Button title-attribute
+			300							// Priority
+		);
+	</script>
+	<?php
+}
+add_action('admin_print_footer_scripts', 'showexcerpt_addeditorbutton');
+
+// Add admin option page
+// TODO
