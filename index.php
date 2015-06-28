@@ -9,7 +9,7 @@ Author URI: http://frique.me/
 */
 
 // The shortcode
-function showexcerpt_shortcode($attributes, $content){
+function showexcerpt_shortcode( $attributes, $content ) {
 
 	// Defaults (TODO: as plugin options)
 	$defaults['tag'] = 'p';
@@ -23,34 +23,31 @@ function showexcerpt_shortcode($attributes, $content){
 	);
 
 	// Return
-	if(get_the_excerpt()){
-		$return = '<'.$attributes['tag'].' class="excerpt'.(($attributes['styled']) ? ' excerpt--styled' : '').'">';
+	if ( get_the_excerpt() ) {
+		$return = '<' . $attributes['tag'] . ' class="excerpt' . ( ( $attributes['styled'] ) ? ' excerpt--styled' : '' ) . '">';
 		$return .= get_the_excerpt();
-		$return .= '</'.$attributes['tag'].'>';
+		$return .= '</' . $attributes['tag'] . '>';
 		return $return;
 	}
 	return '';
 
 }
-add_shortcode('excerpt', 'showexcerpt_shortcode');
+add_shortcode( 'excerpt', 'showexcerpt_shortcode' );
 
 // Add button to admin text editor (HTML tab)
-function showexcerpt_addeditorbutton(){
+function showexcerpt_addeditorbutton() {
 	?>
 	<script type="text/javascript">
 		QTags.addButton(
-			"quicktag-showexcerpt",                          // Button id-attribute
-			"[excerpt]",                                     // Button text
-			"[excerpt]",                                     // Opening tag
-			"",                                              // Closing tag
-			"",                                              // Shortcut key
-			"<?php __('Insert excerpt', 'showexcerpt'); ?>", // Button title-attribute
-			300                                              // Priority
+			"quicktag-showexcerpt",                            // Button id-attribute
+			"[excerpt]",                                       // Button text
+			"[excerpt]",                                       // Opening tag
+			"",                                                // Closing tag
+			"",                                                // Shortcut key
+			"<?php __( 'Insert excerpt', 'showexcerpt' ); ?>", // Button title-attribute
+			300                                                // Priority
 		);
 	</script>
 	<?php
 }
-add_action('admin_print_footer_scripts', 'showexcerpt_addeditorbutton');
-
-// Add admin option page
-// TODO
+add_action( 'admin_print_footer_scripts', 'showexcerpt_addeditorbutton' );
