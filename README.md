@@ -11,5 +11,5 @@ Available options (shortcode attributes) are:
 * tag: p, span, em etc. The default is "p".
 * styled: usable when you sometimes want to style the block differently and sometimes as regular text. Adds the class "excerpt--styled" when true. The default is true.
 
-Example 1: <code>[shortcode]</code><br />
-Example 2: <code>[shortcode tag="span" styled="0"]</code>
+Example 1: <code>[excerpt]</code><br />
+Example 2: <code>[excerpt tag="span" styled="0"]</code>
