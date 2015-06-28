@@ -11,22 +11,23 @@ Author URI: http://frique.me/
 // The shortcode
 function showexcerpt_shortcode( $attributes, $content ) {
 
-	// Defaults (TODO: as plugin options)
+	// Defaults
 	$defaults['tag'] = 'p';
 	$defaults['styled'] = true;
+	$defaults['class'] = '';
 
 	// Merge supplied attributes with defaults
 	$attributes = shortcode_atts(
 		$defaults,
 		$attributes,
-		'showexcerpt_shortcode'
+		'excerpt'
 	);
 
 	// Return
 	if ( get_the_excerpt() ) {
-		$return = '<' . $attributes['tag'] . ' class="excerpt' . ( ( $attributes['styled'] ) ? ' excerpt--styled' : '' ) . '">';
+		$return = '<' . esc_attr( $attributes['tag'] ) . ' class="excerpt' . ( ( $attributes['styled'] ) ? ' excerpt--styled' : '' ) . ( ( $attributes['class'] ) ? esc_attr( $attributes['class'] ) : '' ) '">';
 		$return .= get_the_excerpt();
-		$return .= '</' . $attributes['tag'] . '>';
+		$return .= '</' . esc_attr( $attributes['tag'] ) . '>';
 		return $return;
 	}
 	return '';
